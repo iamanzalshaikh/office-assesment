@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3000;
 
 // ✅ CORS configuration
 app.use(cors({
-  origin: "https://officemanagment.netlify.app", 
+  origin: "https://office-assesment.onrender.com", 
   credentials: true,                            
 }));
 
