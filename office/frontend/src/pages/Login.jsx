@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-import { userDataContext } from "../context/userContext";
+import { userDataContext } from "../context/UserContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
