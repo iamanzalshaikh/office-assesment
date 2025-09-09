@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // ✅ Updated Logout with API integration
+  //  Updated Logout with API integration
   const handleLogout = async () => {
     try {
       const res = await axios.post(
@@ -25,10 +25,9 @@ const Navbar = () => {
         { withCredentials: true }
       );
 
-      // Clear user context
+    
       setUserData(null);
 
-      // Success toast
       toast.success(res.data.message || "Logged out successfully!", {
         position: "top-center",
         autoClose: 3000,
