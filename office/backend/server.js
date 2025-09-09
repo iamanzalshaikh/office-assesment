@@ -21,20 +21,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ✅ CORS configuration
-const allowedOrigins = [
-  "https://office-assesment-1.onrender.com",
-  "https://officemanagment.netlify.app"
-];
-
 app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
+  origin: "https://officemanagment.netlify.app", 
+  credentials: true,                                  
 }));
 
 
