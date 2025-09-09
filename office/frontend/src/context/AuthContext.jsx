@@ -3,7 +3,7 @@ import React, { createContext } from 'react';
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    let serverUrl = "http://localhost:8000";
+    let serverUrl = "https://office-assesment.onrender.com";
 
     let value = {
         serverUrl
