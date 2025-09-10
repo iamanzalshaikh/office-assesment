@@ -25,12 +25,12 @@ export const signup = async (req, res) => {
 
     const token = genToken(user._id);
 
-res.cookie("token", token, {
-  httpOnly: true,             // prevents JS access (good!)
-sameSite: "None",
-  secure: false,                // must be true for HTTPS
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-});
+  res.cookie("token", token, {
+      httpOnly: true,    // secure from JS
+      sameSite: "None",  // cross-site (Netlify → Render)
+      secure: true,      // required for HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
 
     res.status(201).json({
       message: "Signup successful",
@@ -55,12 +55,12 @@ export const login = async (req, res) => {
 
     const token = genToken(user._id);
 
-res.cookie("token", token, {
-  httpOnly: true,             // prevents JS access (good!)
-sameSite: "None",
-  secure: false,             // must be true for HTTPS
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-});
+  res.cookie("token", token, {
+      httpOnly: true,    // secure from JS
+      sameSite: "None",  // cross-site (Netlify → Render)
+      secure: true,      // required for HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    }); 
     res.status(200).json({
       message: "Login successful",
       user: { id: user._id, name: user.name, email: user.email  },
@@ -74,12 +74,12 @@ sameSite: "None",
 // LOGOUT
 export const logout = (req, res) => {
   try {
- res.clearCookie("token", {
-  httpOnly: true,
-  sameSite: "None",  // must match login/signup
-   secure: false, 
-  path: "/",
-});
+    res.clearCookie("token", {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      path: "/",
+    });
     res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     console.error("Logout error:", error);
